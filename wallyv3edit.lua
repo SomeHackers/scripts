@@ -535,14 +535,11 @@ function library:Init(parent)
 				local togglechecker = CheckBox()
 				togglechecker.ImageTransparency = thistoggle and 0 or 1
 				togglechecker.Parent = togglecolour
-				while wait() do
+				
 				local togglebutton = Button(text or "Toggle")
-				end
 				togglebutton.Size = UDim2.new(1,-30,1,0)
 				togglebutton.Font = Enum.Font.SourceSansBold
-				while wait() do
 				togglebutton.Text = ("  "..text) or ("  Toggle")
-				end
 				togglebutton.TextXAlignment = Left
 				togglebutton.TextColor3 = libraryColours.Text
 				togglebutton.TextSize = 16
