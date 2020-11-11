@@ -536,15 +536,26 @@ function library:Init(parent)
 				togglechecker.ImageTransparency = thistoggle and 0 or 1
 				togglechecker.Parent = togglecolour
 				
-				local togglebutton = Button(text or "Toggle")
-				togglebutton.Size = UDim2.new(1,-30,1,0)
-                togglebutton.Font = Enum.Font.SourceSansBold
                 
                 if type(text) == "table" and text[2] == "refresh" then
+                    local togglebutton = Button(text[1] or "Toggle")
+                    togglebutton.Size = UDim2.new(1,-30,1,0)
+                    togglebutton.Font = Enum.Font.SourceSansBold
+
                 while wait() do
                 togglebutton.Text = ("  "..text[1])
                 end
-                else
+            elseif type(text) == "table" then 
+                local togglebutton = Button(text[1] or "Toggle")
+                togglebutton.Size = UDim2.new(1,-30,1,0)
+                togglebutton.Font = Enum.Font.SourceSansBold
+
+                togglebutton.Text = ("  "..text[1])
+            else
+                local togglebutton = Button(text or "Toggle")
+				togglebutton.Size = UDim2.new(1,-30,1,0)
+                togglebutton.Font = Enum.Font.SourceSansBold
+
                 togglebutton.Text = ("  "..text) or ("  Toggle")
                 end
 				togglebutton.TextXAlignment = Left
@@ -577,3 +588,5 @@ function library:Init(parent)
 end
 
 return library
+
+
