@@ -535,29 +535,11 @@ function library:Init(parent)
 				local togglechecker = CheckBox()
 				togglechecker.ImageTransparency = thistoggle and 0 or 1
 				togglechecker.Parent = togglecolour
-				
-                
-                if type(text) == "table" and text[2] == "refresh" then
-                    local togglebutton = Button(text[1] or "Toggle")
-                    togglebutton.Size = UDim2.new(1,-30,1,0)
-                    togglebutton.Font = Enum.Font.SourceSansBold
-
-                while wait() do
-                togglebutton.Text = ("  "..text[1])
-                end
-            elseif type(text) == "table" then 
-                local togglebutton = Button(text[1] or "Toggle")
-                togglebutton.Size = UDim2.new(1,-30,1,0)
-                togglebutton.Font = Enum.Font.SourceSansBold
-
-                togglebutton.Text = ("  "..text[1])
-            else
-                local togglebutton = Button(text or "Toggle")
+				local togglebutton = Button(text or "Toggle")
 				togglebutton.Size = UDim2.new(1,-30,1,0)
-                togglebutton.Font = Enum.Font.SourceSansBold
+               			togglebutton.Font = Enum.Font.SourceSansBold
 
-                togglebutton.Text = ("  "..text) or ("  Toggle")
-                end
+		                togglebutton.Text = ("  "..text) or ("  Toggle")
 				togglebutton.TextXAlignment = Left
 				togglebutton.TextColor3 = libraryColours.Text
 				togglebutton.TextSize = 16
