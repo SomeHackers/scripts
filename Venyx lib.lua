@@ -1,4 +1,5 @@
 -- init
+-- init
 local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
 
@@ -214,7 +215,7 @@ do
 	function library.new(title)
 		local container = utility:Create("ScreenGui", {
 			Name = title,
-			Parent = game.CoreGui
+			Parent = game.Players.LocalPlayer.PlayerGui
 		}, {
 			utility:Create("ImageLabel", {
 				Name = "Main",
@@ -2100,14 +2101,13 @@ do
 
 		utility:Pop(dropdown.Search, 10)
 
-		for i, button in pairs(dropdown.List.Frame:GetChildren()) do
-			if button:IsA("ImageButton") then
+        for i, button in pairs(dropdown.List.Frame:GetChildren()) do
+            if button:IsA("ImageButton") then
 				button:Destroy()
 			end
 		end
 
-		for i, value in next, list or {} do
-			wait()
+        for i, value in next, list or {} do
 			local button = utility:Create("ImageButton", {
 				Parent = dropdown.List.Frame,
 				BackgroundTransparency = 1,
@@ -2134,27 +2134,32 @@ do
 			})
 
 			button.MouseButton1Click:Connect(function()
-				if callback then
+                if callback then
+                    utility:Wait()
 					callback(value, function(...)
 						self:updateDropdown(dropdown, ...)
 					end)	
 				end
 
-				self:updateDropdown(dropdown, value, nil, callback)
+                self:updateDropdown(dropdown, value, nil, callback)
+                utility:Wait()
+             
 			end)
 
 			entries = entries + 1
 		end
 
 		local frame = dropdown.List.Frame
-
+wait()
 		utility:Tween(dropdown, {Size = UDim2.new(1, 0, 0, (entries == 0 and 30) or math.clamp(entries, 0, 3) * 34 + 38)}, 0.3)
+		wait()
 		utility:Tween(dropdown.Search.Button, {Rotation = list and 180 or 0}, 0.3)
 
 		if entries > 3 then
-
-			for i, button in pairs(dropdown.List.Frame:GetChildren()) do
-				if button:IsA("ImageButton") then
+wait()
+            for i, button in pairs(dropdown.List.Frame:GetChildren()) do
+                if button:IsA("ImageButton") then
+                    wait()
 					button.Size = UDim2.new(1, -6, 0, 30)
 				end
 			end
@@ -2167,5 +2172,6 @@ do
 		end
 	end
 end
+
 
 return library
