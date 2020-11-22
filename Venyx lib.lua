@@ -214,7 +214,7 @@ do
 	function library.new(title)
 		local container = utility:Create("ScreenGui", {
 			Name = title,
-			Parent = game.Players.LocalPlayer.PlayerGui
+			Parent = game.CoreGui
 		}, {
 			utility:Create("ImageLabel", {
 				Name = "Main",
@@ -2100,14 +2100,14 @@ do
 
 		utility:Pop(dropdown.Search, 10)
 
-        for i, button in pairs(dropdown.List.Frame:GetChildren()) do
-            if button:IsA("ImageButton") then
+		for i, button in pairs(dropdown.List.Frame:GetChildren()) do
+			if button:IsA("ImageButton") then
 				button:Destroy()
 			end
 		end
 
-        for i, value in next, list or {} do
-            wait()
+		for i, value in next, list or {} do
+			wait()
 			local button = utility:Create("ImageButton", {
 				Parent = dropdown.List.Frame,
 				BackgroundTransparency = 1,
@@ -2153,8 +2153,8 @@ do
 
 		if entries > 3 then
 
-            for i, button in pairs(dropdown.List.Frame:GetChildren()) do
-                if button:IsA("ImageButton") then
+			for i, button in pairs(dropdown.List.Frame:GetChildren()) do
+				if button:IsA("ImageButton") then
 					button.Size = UDim2.new(1, -6, 0, 30)
 				end
 			end
